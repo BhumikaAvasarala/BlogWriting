@@ -1,13 +1,13 @@
 {
   "site": {
-    "title": "ZenBackend",
+    "title": "BlogWriter",
     "base_url": "https://blogs.jeldiserve.site",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
     "logo_width": "400",
     "logo_height": "34",
-    "logo_text": "ZenBackend"
+    "logo_text": "BlogWriter"
   },
 
   "settings": {
@@ -23,7 +23,7 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Copyright © @ZenBackend"
+    "copyright": "Copyright © @BlogWriter"
   },
 
   "contactinfo": {
