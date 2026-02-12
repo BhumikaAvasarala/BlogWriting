@@ -1,0 +1,34 @@
+{
+  "site": {
+    "title": "ZenBackend",
+    "base_url": "https://blogs.jeldiserve.site",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo_width": "400",
+    "logo_height": "34",
+    "logo_text": "ZenBackend"
+  },
+
+  "settings": {
+    "pagination": 5,
+    "summary_length": 100
+  },
+
+  "metadata": {
+    "meta_author": "Themefisher",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "Bookworm Light Astro Blog Template"
+  },
+
+  "params": {
+    "contact_form_action": "#",
+    "copyright": "Copyright © @ZenBackend"
+  },
+
+  "contactinfo": {
+    "address": "Bangalore",
+    "email": "jeldiserve@gmail.com",
+    "phone": "+"
+  }
+}

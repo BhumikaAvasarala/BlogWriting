@@ -1,0 +1,120 @@
+---
+import Logo from "@/components/Logo.astro";
+import menu from "@/config/menu.json";
+import { IoSearch } from "react-icons/io5";
+
+export interface ChildNavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+const { main }: { main: NavigationLink[] } = menu;
+---
+
+<header class="bg-indigo-700	text-gray-100 py-4 md:w-4/5 w-full md:mt-5 md:rounded-lg  md:container md:flex md:items-center md:justify-center ">
+  <nav class="w-5/6 mx-auto flex items-center justify-between px-4">
+    <!-- Logo -->
+    <div class="flex text-gray-100  items-center space-x-4">
+      <Logo />
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex items-center space-x-8">
+      {main.map((menu) => (
+        <li class="relative group" key={menu.name}>
+          {menu.hasChildren ? (
+            <>
+              <span class="cursor-pointer inline-flex items-center hover:text-blue-600">
+                {menu.name}
+                <svg class="w-4 h-4 ml-1text-gray-100 " fill="none" viewBox="0 0 20 20">
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                </svg>
+              </span>
+              <ul class="absolute left-0 mt-2 w-40 hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg border border-gray-200">
+                {menu.children?.map((child) => (
+                  <li key={child.name}>
+                    <a href={child.url} class="block px-4 py-2 hover:bg-gray-100">
+                      {child.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <a href={menu.url} class="hover:text-blue-600">
+              {menu.name}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <!-- Search Icon -->
+    <div class="hidden md:flex items-center space-x-4">
+      <a href="/search" class="text-xl text-gray-100 hover:text-blue-600">
+        <IoSearch />
+      </a>
+    </div>
+
+    <!-- Mobile Toggle Button -->
+    <div class="md:hidden">
+      <button class="focus:outline-none" onclick="toggleMenu()">
+        <svg class="h-6 w-6 text-gray-100 transition-transform duration-200 ease-in-out transform hover:scale-110 hover:text-gray-400" fill="none" viewBox="0 0 24 24">
+          <path class="stroke-current" stroke="currentColor" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="nav-menu" class="flex-col bg-indigo-700 space-y-4 ml-8 px-4 py-6 text-gray-100 md:hidden rounded-lg mt-3" style="display: none;">
+    <ul class="space-y-4">
+      {main.map((menu) => (
+        <li key={menu.name}>
+          {menu.hasChildren ? (
+            <>
+              <span class="cursor-pointer inline-flex items-center hover:text-blue-600">
+                {menu.name}
+                <svg class="w-4 h-4 ml-1 text-gray-100" fill="none" viewBox="0 0 20 20">
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                </svg>
+              </span>
+              <ul class="pl-4 mt-2 space-y-2">
+                {menu.children?.map((child) => (
+                  <li key={child.name}>
+                    <a href={child.url} class="block hover:text-blue-600">
+                      {child.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <a href={menu.url} class="block hover:text-blue-600">
+              {menu.name}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+    <div class="mt-4">
+      <a href="/search" class="text-xl text-gray-100 hover:text-blue-600">
+        <IoSearch />
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Client-side script to toggle mobile menu -->
+<script client:load>
+  function toggleMenu() {
+    const navMenu = document.getElementById("nav-menu");
+    if (navMenu.style.display === "none" || navMenu.style.display === "") {
+      navMenu.style.display = "flex";
+    } else {
+      navMenu.style.display = "none";
+    }
+  }
+</script>

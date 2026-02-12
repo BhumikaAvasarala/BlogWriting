@@ -1,0 +1,30 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Tags",
+      "url": "/tags"
+    },
+    {
+      "name": "Categories",
+      "url": "/categories"
+    },
+    {
+      "name": "Authors",
+      "url": "/authors"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Authors",
+      "url": "/authors"
+    },
+    {
+      "name": "Categories",
+      "url": "/categories"
+    }
+  ]
+}
